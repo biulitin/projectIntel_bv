@@ -1,53 +1,53 @@
-create database Ordinator;
+п»їcreate database Ordinator;
 go
 
---указываем, что все дальнейшие запросы должны быть выполнены для БД ординатор
+--СѓРєР°Р·С‹РІР°РµРј, С‡С‚Рѕ РІСЃРµ РґР°Р»СЊРЅРµР№С€РёРµ Р·Р°РїСЂРѕСЃС‹ РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РІС‹РїРѕР»РЅРµРЅС‹ РґР»СЏ Р‘Р” РѕСЂРґРёРЅР°С‚РѕСЂ
 use Ordinator;
 go
 
---Пол
+--РџРѕР»
 create table Gender (
-	id int primary key, --код
-	name text,			--название пола (для отображения в интерфейсе)
-	codeFIS text		--код выгрузки в ФИС
+	id int primary key, --РєРѕРґ
+	name text,			--РЅР°Р·РІР°РЅРёРµ РїРѕР»Р° (РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ РёРЅС‚РµСЂС„РµР№СЃРµ)
+	codeFIS text		--РєРѕРґ РІС‹РіСЂСѓР·РєРё РІ Р¤РРЎ
 );
 go
 
---Гражданство
+--Р“СЂР°Р¶РґР°РЅСЃС‚РІРѕ
 create table Nationality (
-	id int primary key, --код
-	name text,			--название гражданства/страна (для отображения в интерфейсе)
-	codeFIS text		--код выгрузки в ФИС
+	id int primary key, --РєРѕРґ
+	name text,			--РЅР°Р·РІР°РЅРёРµ РіСЂР°Р¶РґР°РЅСЃС‚РІР°/СЃС‚СЂР°РЅР° (РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ РёРЅС‚РµСЂС„РµР№СЃРµ)
+	codeFIS text		--РєРѕРґ РІС‹РіСЂСѓР·РєРё РІ Р¤РРЎ
 );
 go
 
---Причины возврата документов
+--РџСЂРёС‡РёРЅС‹ РІРѕР·РІСЂР°С‚Р° РґРѕРєСѓРјРµРЅС‚РѕРІ
 create table ReturnReasons (
-	id int primary key, --код
-	name text,			--наименование причины (для отображения в интерфейсе)
-	codeFIS text		--код выгрузки в ФИС
+	id int primary key, --РєРѕРґ
+	name text,			--РЅР°РёРјРµРЅРѕРІР°РЅРёРµ РїСЂРёС‡РёРЅС‹ (РґР»СЏ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ РёРЅС‚РµСЂС„РµР№СЃРµ)
+	codeFIS text		--РєРѕРґ РІС‹РіСЂСѓР·РєРё РІ Р¤РРЎ
 );
 go
 
---Абитуриент
+--РђР±РёС‚СѓСЂРёРµРЅС‚
 create table Abiturient (
-	aid int primary key,	--код/номер личного дела абитуриента
-	SName text,				--Фамилия
-	Fname text,				--Имя
-	MName text,				--Отчество
-	Birthday Date,			--Дата рождения
-	Birthplace text,		--Место рождения
-	id_gender int,			--код пола
-	id_nationality int,		--код страны гражданства
-	phoneNumbers text,		--телефоны
-	needHostel int,			--метка "Нуждается в общежитии"
-	registrationDate Date,	--дата подачи заявления
-	returnDate Date,		--Дата возврата документов
-	id_returnReason int,	--причина возврата документов
-	needSpecConditions int,	--метка "Нуждается в специальных условиях вступительных испытаний"
-	is_enrolled int,		--метка о зачислении
+	aid int primary key,	--РєРѕРґ/РЅРѕРјРµСЂ Р»РёС‡РЅРѕРіРѕ РґРµР»Р° Р°Р±РёС‚СѓСЂРёРµРЅС‚Р°
+	SName text,				--Р¤Р°РјРёР»РёСЏ
+	Fname text,				--РРјСЏ
+	MName text,				--РћС‚С‡РµСЃС‚РІРѕ
+	Birthday Date,			--Р”Р°С‚Р° СЂРѕР¶РґРµРЅРёСЏ
+	Birthplace text,		--РњРµСЃС‚Рѕ СЂРѕР¶РґРµРЅРёСЏ
+	id_gender int,			--РєРѕРґ РїРѕР»Р°
+	id_nationality int,		--РєРѕРґ СЃС‚СЂР°РЅС‹ РіСЂР°Р¶РґР°РЅСЃС‚РІР°
+	phoneNumbers text,		--С‚РµР»РµС„РѕРЅС‹
+	needHostel int,			--РјРµС‚РєР° "РќСѓР¶РґР°РµС‚СЃСЏ РІ РѕР±С‰РµР¶РёС‚РёРё"
+	registrationDate Date,	--РґР°С‚Р° РїРѕРґР°С‡Рё Р·Р°СЏРІР»РµРЅРёСЏ
+	returnDate Date,		--Р”Р°С‚Р° РІРѕР·РІСЂР°С‚Р° РґРѕРєСѓРјРµРЅС‚РѕРІ
+	id_returnReason int,	--РїСЂРёС‡РёРЅР° РІРѕР·РІСЂР°С‚Р° РґРѕРєСѓРјРµРЅС‚РѕРІ
+	needSpecConditions int,	--РјРµС‚РєР° "РќСѓР¶РґР°РµС‚СЃСЏ РІ СЃРїРµС†РёР°Р»СЊРЅС‹С… СѓСЃР»РѕРІРёСЏС… РІСЃС‚СѓРїРёС‚РµР»СЊРЅС‹С… РёСЃРїС‹С‚Р°РЅРёР№"
+	is_enrolled int,		--РјРµС‚РєР° Рѕ Р·Р°С‡РёСЃР»РµРЅРёРё
 	
-	--Внешние ключи
+	--Р’РЅРµС€РЅРёРµ РєР»СЋС‡Рё
 	foreign key (id_gender) references Gender(id),
 	foreign key (id_nationality) references Nationality(id),
 	foreign key (id_returnReason) references ReturnReasons(id)
